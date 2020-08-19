@@ -1,13 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
-const Home = () => <div>hahah</div>
+import Weather from 'containers/Weather/loadable';
 
 export default function () {
   return (
     <Router>
       <Switch>
-        <Route exact path={'/'} component={Home} />
+        <Route exact path={'/'} component={Weather} />
       </Switch>
     </Router>
   )
