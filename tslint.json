@@ -1,0 +1,18 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-plugin-prettier"],
+  "rulesDirectory": [
+    "tslint-plugin-prettier"
+  ],
+  "rules": {
+    "prettier": true,
+    "jsx-wrap-multiline": false,
+    "jsx-boolean-value": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/setupTests.ts"
+  ]
+}

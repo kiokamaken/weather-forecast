@@ -3,5 +3,8 @@
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "useTabs": false
+  "useTabs": false,
+  "newline-before-return": true,
+  "no-duplicate-variable": [true, "check-parameters"],
+  "no-var-keyword": true
 }
