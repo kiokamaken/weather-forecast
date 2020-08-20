@@ -4,13 +4,12 @@ import { LocationBase, Location } from 'models';
 export interface WeatherState {
   loading: boolean;
   error: string[];
-  isCelsius: boolean;
   forecastData: Location;
   locationSuggestions: LocationBase[];
 }
 
 export interface ActionPayloads {
-  getLocation: { search: string, isLattLong: boolean };
+  getLocation: { search: string; isLattLong: boolean };
   getLocationSuccess: LocationBase[];
   getForecastByWoeId: { id: string };
   getForecastByWoeIdSuccess: Location;
@@ -18,7 +17,8 @@ export interface ActionPayloads {
 
 const weatherSlice = createSlice({
   name: 'weather',
-  initialState: { isCelsius: true } as WeatherState,
+  // tslint:disable-next-line: no-object-literal-type-assertion
+  initialState: {} as WeatherState,
   reducers: {
     getLocationSuggestions(
       state,
@@ -56,9 +56,6 @@ const weatherSlice = createSlice({
       state.error = ['Get Forecast fail'];
       state.loading = false;
     },
-    toggleCelcius(state) {
-      state.isCelsius = !state.isCelsius;
-    },
   },
 });
 
@@ -69,7 +66,6 @@ export const {
   getForecastByWoeId,
   getForecastByWoeIdSuccess,
   getForecastByWoeIdFail,
-  toggleCelcius,
 } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

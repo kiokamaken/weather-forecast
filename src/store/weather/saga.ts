@@ -1,18 +1,19 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
-import {
-  getLocationSuggestions,
-  getLocationSuggestionsSuccess,
-  getLocationSuggestionsFail,
-  getForecastByWoeId,
-  getForecastByWoeIdSuccess,
-  getForecastByWoeIdFail,
-} from './slice';
-import { searchLocation, getForecastById } from 'services/metaWeather.service';
-import { ActionPayloads } from './slice';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { LocationBase, Location } from 'models';
+import { Location, LocationBase } from 'models';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { getForecastById, searchLocation } from 'services/metaWeather.service';
 
-function* fetchlocationSuggestions(
+import {
+  ActionPayloads,
+  getForecastByWoeId,
+  getForecastByWoeIdFail,
+  getForecastByWoeIdSuccess,
+  getLocationSuggestions,
+  getLocationSuggestionsFail,
+  getLocationSuggestionsSuccess,
+} from './slice';
+
+export function* fetchlocationSuggestions(
   action: PayloadAction<ActionPayloads['getLocation']>
 ) {
   const {
@@ -26,7 +27,7 @@ function* fetchlocationSuggestions(
   }
 }
 
-function* getForecastData(
+export function* getForecastData(
   action: PayloadAction<ActionPayloads['getForecastByWoeId']>
 ) {
   try {

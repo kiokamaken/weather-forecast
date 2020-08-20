@@ -3,32 +3,14 @@ import Typo from 'components/Typo';
 import { WeatherBase } from 'models';
 import { StyledWeatherItem } from './Styled';
 import { Col, Row } from 'antd';
-import { getDayInWeek } from 'utils/datetime';
-import memoize from 'lodash/fp/memoize';
+import { dayDisplay, convertUnit, getUnitText } from './utils';
 
-interface WeatherItemProps {
+export interface WeatherItemProps {
   forecast: WeatherBase;
   isCelsius: boolean;
 }
 
-const WeatherItem = ({ forecast, isCelsius }: WeatherItemProps) => {
-  const dayDisplay = memoize((date: string) => {
-    const dayInWeek = getDayInWeek(date);
-    return dayInWeek?.isToday
-      ? 'Today'
-      : dayInWeek?.isTomorrow
-      ? 'Tomorrow'
-      : dayInWeek?.day;
-  });
-
-  const convertUnit = (temp: number) => {
-    const rounded = Math.round(temp);
-    // convert Celsius to Fahrenheit
-    return isCelsius ? rounded : Math.round(rounded * 1.8 + 32);
-  };
-
-  const getUnitText = () => (isCelsius ? '°C' : '°F');
-
+const WeatherItem: React.FC<WeatherItemProps> = ({ forecast, isCelsius }) => {
   return (
     <StyledWeatherItem>
       <img
@@ -41,10 +23,10 @@ const WeatherItem = ({ forecast, isCelsius }: WeatherItemProps) => {
       <article>
         <section className="the-temp">
           <Typo size="large" fontWeight="600">
-            {convertUnit(forecast.the_temp)}
+            {convertUnit(forecast.the_temp, isCelsius)}
           </Typo>
           <Typo size="medium" fontWeight="400">
-            {getUnitText()}
+            {getUnitText(isCelsius)}
           </Typo>
           <div>
             <Typo size="small" fontWeight="300">
@@ -58,7 +40,8 @@ const WeatherItem = ({ forecast, isCelsius }: WeatherItemProps) => {
               Min:
             </Typo>{' '}
             <Typo size="small" fontWeight="500">
-              {convertUnit(forecast.min_temp)} {getUnitText()}
+              {convertUnit(forecast.min_temp, isCelsius)}{' '}
+              {getUnitText(isCelsius)}
             </Typo>
           </Col>
           <Col>
@@ -66,7 +49,8 @@ const WeatherItem = ({ forecast, isCelsius }: WeatherItemProps) => {
               Max:
             </Typo>{' '}
             <Typo size="small" fontWeight="500">
-              {convertUnit(forecast.max_temp)} {getUnitText()}
+              {convertUnit(forecast.max_temp, isCelsius)}{' '}
+              {getUnitText(isCelsius)}
             </Typo>
           </Col>
         </Row>

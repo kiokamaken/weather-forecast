@@ -2,15 +2,11 @@ import React, { ErrorInfo } from 'react';
 
 export default class ErrorBoundary extends React.Component {
   state = {
-    hasError: false
-  }
+    hasError: false,
+  };
 
   static getDerivedStateFromError(error: ErrorInfo) {
     return { hasError: !!error };
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log(error, errorInfo)
   }
 
   render() {

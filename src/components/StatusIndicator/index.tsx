@@ -6,21 +6,23 @@ import {
   ExclamationCircleTwoTone,
 } from '@ant-design/icons';
 
-interface StatusIndicator {
+export interface StatusIndicatorProps {
   loading: boolean;
   success?: boolean;
   warning?: boolean;
 }
 
-const StatusIndicator = (props: StatusIndicator) => {
+const StatusIndicator = (props: StatusIndicatorProps) => {
   const { loading, success, warning } = props;
   return (
     <>
       {loading && (
         <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
       )}
-      {success && <CheckCircleTwoTone style={{ fontSize: 24 }} />}
-      {warning && <ExclamationCircleTwoTone twoToneColor="red" style={{ fontSize: 24 }} />}
+      {!loading && success && <CheckCircleTwoTone style={{ fontSize: 24 }} />}
+      {!loading && warning && (
+        <ExclamationCircleTwoTone twoToneColor="red" style={{ fontSize: 24 }} />
+      )}
     </>
   );
 };

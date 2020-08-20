@@ -1,29 +1,27 @@
 import React from 'react';
 import { Location } from 'models';
 import Typo from 'components/Typo';
-import { LocationSection } from './Styled';
+import { LocationWrapper } from './Styled';
 import { formatTime } from 'utils/datetime';
 
-interface LocationInfoSectionProps {
-  info: Location;
+export interface LocationInfoSectionProps {
+  info: Pick<Location, 'title' | 'time' | 'parent'>;
 }
 
 const LocationInfoSection: React.FC<LocationInfoSectionProps> = ({ info }) => {
-
-
   return (
-    <LocationSection>
-      <div>
+    <LocationWrapper>
+      <section>
         <Typo size="large" color="white" fontWeight="500">
           {info.title}, {formatTime(info.time)}
         </Typo>
-      </div>
-      <div>
+      </section>
+      <section>
         <Typo size="medium" color="white" fontWeight="400">
           {info.parent?.title}
         </Typo>
-      </div>
-    </LocationSection>
+      </section>
+    </LocationWrapper>
   );
 };
 

@@ -8,12 +8,12 @@ import store from './store';
 
 function App() {
   return (
-    <ThemeProvider theme={light}>
-      <GlobalStyle />
-      <Provider store={store}>
-        <Router></Router>
-      </Provider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={light}>
+        <GlobalStyle />
+        <Router />
+      </ThemeProvider>
+    </Provider>
   );
 }
 

@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Weather from 'containers/Weather/loadable';
 
 export default function () {
@@ -9,5 +9,5 @@ export default function () {
         <Route exact path={'/'} component={Weather} />
       </Switch>
     </Router>
-  )
+  );
 }

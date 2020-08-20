@@ -1,7 +1,7 @@
 import request from 'utils/request';
 import { LocationBase } from 'models';
 
-const API_ENDPOINT = 'https://www.metaweather.com/api';
+const API_ENDPOINT = '/api';
 
 export const searchLocation = (search: string, isLattLong?: boolean) => {
   const query = `${API_ENDPOINT}/location/search?${

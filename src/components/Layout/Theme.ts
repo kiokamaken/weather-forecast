@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components'
+import { DefaultTheme } from 'styled-components';
 
 export const base: DefaultTheme = {
   palette: {
@@ -7,7 +7,7 @@ export const base: DefaultTheme = {
     white: '#fff',
     black: '#000',
     grey: '#ecf0f1',
-    background: '#3b064d'
+    background: '#3b064d',
   },
   shadow: '0px 3px 15px 2px #ddd',
   animation: 'all 0.3s ease-in-out',

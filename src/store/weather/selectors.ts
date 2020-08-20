@@ -16,11 +16,6 @@ export const selectForecastData = createSelector(
   (weather) => weather.forecastData
 );
 
-export const selectIsCelsius = createSelector(
-  selectWeather,
-  (weather) => weather.isCelsius
-);
-
 export const selectLoading = createSelector(
   selectWeather,
   (weather) => weather.loading

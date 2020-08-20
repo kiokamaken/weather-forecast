@@ -15,7 +15,7 @@ export const StyledWeatherItem = styled.section`
     background: ${(props) => props.theme.palette.white};
     border-radius: 50%;
     position: absolute;
-    transform: translate(0%,-65%);
+    transform: translate(0%, -65%);
     left: 0;
     right: 0;
     margin: auto;
@@ -28,7 +28,7 @@ export const StyledWeatherItem = styled.section`
     display: block;
     margin: 0.5rem auto;
     position: absolute;
-    transform: translate(0%,-82%);
+    transform: translate(0%, -82%);
     left: 0;
     right: 0;
   }
